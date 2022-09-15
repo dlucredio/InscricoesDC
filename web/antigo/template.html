@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>:: UFSCar - Programa de Pós-Graduação em Ciências da Computação - Mestrado::</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+
+        <div class="container">
+            <div class="jumbotron text-center">
+                <p>Formulário de Inscrição - Edital 02/2016 - PPG-CC/UFSCar</p>
+                <p>Processo Seletivo para Ingresso Regular no Curso
+                    de Mestrado em Ciência da Computação</p> 
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <form role="form" action="validarFormulario.jsp" method="post" enctype="multipart/form-data">
+                        <div class="well well-sm">
+                            <p>1. Dados pessoais:</p>
+                            <div class="form-group">
+                                <label for="nome">Nome:</label>
+                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Digite seu nome" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail:</label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Digite seu e-mail">
+                            </div>
+                            <div class="form-group">
+                                <label for="skype">Usuário skype (obrigatório para entrevista via webconferência):</label>
+                                <input type="text" class="form-control" name="skype" id="skype" placeholder="Digite seu usuário skype">
+                            </div>
+                            <div class="form-group">
+                                <label for="rua">Endereço completo (rua, número, complemento, Cidade, Estado, País e Código Postal):</label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="rua" id="rua" placeholder="Nome da rua">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" name="numero" id="numero" placeholder="Número">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" name="complemento" id="complemento" placeholder="Complemento">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="cidade" id="cidade" placeholder="Cidade">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" name="estado" id="estado" placeholder="Estado">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="pais" id="pais" placeholder="País">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" name="cep" id="cep" placeholder="Código Postal">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefones">Telefones:</label>
+                                <input type="text" class="form-control" name="telefones" id="telefones" placeholder="Digite um ou mais telefones para contato">
+                            </div>
+                            <div class="form-group">
+                                <label for="identidade">Documento de Identidade (número, data de expedição e órgão expedidor):</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="identidade" id="identidade" placeholder="Digite o documento de identidade">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="dataIdentidade" id="dataIdentidade" placeholder="Data de expedição">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" name="orgaoIdentidade" id="orgaoIdentidade" placeholder="Órgão expedidor">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dataNascimento">Data de nascimento e nacionalidade:</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="date" class="form-control" name="dataNascimento" id="dataNascimento">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="nacionalidade" id="nacionalidade" placeholder="Nacionalidade">
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="form-group">
+                                <label for="lattes">Link do currículo na plataforma Lattes (o cadastramento na <a target="_blank" href="http://lattes.cnpq.br">plataforma Lattes</a> é obrigatório):</label>
+                                <input type="text" class="form-control" name="lattes" id="lattes" placeholder="Digite o link para seu currículo na plataforma Lattes">
+                            </div>
+                        </div>
+                        <div class="well well-sm">
+                            <p>2. Dados do exame utilizado</p>
+                            <div class="form-group">
+                                <label for="tipoExame">Qual exame deseja utilizar no processo seletivo?</label>
+                                <label class="radio-inline"><input type="radio" name="tipoExame" value="poscomp">POSCOMP</label>
+                                <label class="radio-inline"><input type="radio" name="tipoExame" value="outro">Outro exame equivalente</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="anoExame">Ano de realização do exame</label>
+                                <label class="radio-inline"><input type="radio" name="anoExame" value="2016">2016</label>
+                                <label class="radio-inline"><input type="radio" name="anoExame" value="2015">2015</label>
+                                <label class="radio-inline"><input type="radio" name="anoExame" value="2014">2014</label>
+                            </div>
+                        </div>
+                        <div class="well well-sm">
+                            <p>3. Linhas de pesquisa nas quais peiteia vaga (Ver Anexo I do edital):</p>
+                            <div class="form-group">
+                                <label for="primeiraOpcao">Primeira opção:</label>
+                                <select class="form-control" name="primeiraOpcao" id="primeiraOpcao">
+                                    <option>Aprendizado de Máquina e Processamento de Línguas Naturais</option>
+                                    <option>Arquitetura de Computadores</option>
+                                    <option>Automação Industrial</option>
+                                    <option>Banco de Dados</option>
+                                    <option>Engenharia de Software</option>
+                                    <option>Interação Humano-Computador</option>
+                                    <option>Processamento de Imagens e Sinais</option>
+                                    <option>Sistemas de automação e robótica</option>
+                                    <option>Sistemas Distribuídos e Redes de Computadores</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="segundaOpcao">Segunda opção:</label>
+                                <select class="form-control" name="segundaOpcao" id="segundaOpcao">
+                                    <option>Nenhuma</option>
+                                    <option>Aprendizado de Máquina e Processamento de Línguas Naturais</option>
+                                    <option>Arquitetura de Computadores</option>
+                                    <option>Automação Industrial</option>
+                                    <option>Banco de Dados</option>
+                                    <option>Engenharia de Software</option>
+                                    <option>Interação Humano-Computador</option>
+                                    <option>Processamento de Imagens e Sinais</option>
+                                    <option>Sistemas de automação e robótica</option>
+                                    <option>Sistemas Distribuídos e Redes de Computadores</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="well well-sm">
+                            <p>4. Relações ou vínculos com a Comissão de Seleção, conforme Artigo 20 do edital:</p>
+                            <div class="form-group">
+                                <label for="possuiVinculo">Possui vínculo com algum membro da Comissão de Seleção?</label>
+                                <label class="radio-inline"><input type="radio" name="possuiVinculo" value="sim">Sim, possuo vínculo</label>
+                                <label class="radio-inline"><input type="radio" name="possuiVinculo" value="nao">Não</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="descricaoVinculo">Se sim, qual(is) vínculo(s) e com quem?</label>
+                                <textarea class="form-control" rows="5" name="descricaoVinculo" id="descricaoVinculo"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="well well-sm">
+                            <p>5. Necessidades especiais:</p>
+                            <div class="form-group">
+                                <label for="possuiNecessidadesEspeciais">Possui necessidades especiais, amparado pelo Decreto 3.298 de 20/12/1999?</label>
+                                <label class="radio-inline"><input type="radio" name="possuiNecessidadesEspeciais" value="sim">Sim, possuo necessidades especiais</label>
+                                <label class="radio-inline"><input type="radio" name="possuiNecessidadesEspeciais" value="nao">Não</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="descricaoNecessidadesEspeciais">Se sim, qual o tipo de necessidade especial possui e qual atendimento diferenciado julga ser necessário (ver Artigo 17 do edital)?</label>
+                                <textarea class="form-control" rows="5" name="descricaoNecessidadesEspeciais" id="descricaoNecessidadesEspeciais"></textarea>
+                            </div>
+                        </div>
+
+                        <p class="text-justify">De acordo com o Art. 19 do Edital 02/2016 - PPG-CC/UFSCar,
+                            ao realizar a inscrição no Processo Seletivo para Ingresso
+                            como Aluno Regular no Curso de Mestrado em Ciência da Computação,
+                            o candidato assume total responsabilidade pela veracidade
+                            das informações fornecidas neste formulário de inscrição
+                            e demais documentos enviados. Assume, ainda, estar ciente
+                            de que não serão permitidas alterações posteriores ao
+                            prazo estabelecido. A inscrição do candidato implica
+                            também no pleno conhecimento de todo o conteúdo do referido
+                            edital, assim como seus anexos, e a tácita aceitação
+                            das normas e condições nele estabelecidas.</p>
+
+                        <div class="form-group"> 
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="acordo" value="sim"> Li e concordo com todas as informações contidas neste formulário.</label>
+                            </div>
+                        </div>                        
+
+                        <div class="form-group"> 
+                            <button type="submit" class="btn btn-default">Realizar inscrição</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

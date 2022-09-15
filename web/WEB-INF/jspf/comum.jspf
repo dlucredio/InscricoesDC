@@ -1,0 +1,75 @@
+<%@page import="java.io.IOException"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.io.StringWriter"%>
+<%@page import="java.io.File"%>
+<%@page import="inscricoesdc.*"%>
+<%!
+    //private final static String PASTA_RAIZ = "/home/cursos/ppg/";
+    //private final static String PASTA_RAIZ = "/home/daniel/Projects/formularioWorkspace/";
+    private final static String PASTA_RAIZ = "/Users/daniellucredio/Programas/InscricoesDC/";
+
+    private final static String NOME_PASTA_INSCRICOES = "inscricoes";
+    private final static String NOME_PASTA_FORMULARIOS = "formularios";
+    private final static String NOME_PASTA_TEMPORARIA = "temp";
+
+    private final static String RETORNO_PARAMETRO = "r";
+    private final static String ID_FORMULARIO = "form";
+    private final static String SEPARADOR_FORMULARIO = "/";
+    private final static String EXTENSAO_FORMULARIO = ".txt";
+    private final static String PAGINA_INICIAL = "index.jsp";
+    private final static String ACAO_FORMULARIO_PARTE1 = "validarFormulario.jsp";
+    private final static String ACAO_FORMULARIO_PARTE2 = "confirmarDados.jsp";
+    private final static String ACAO_FORMULARIO_PARTE3 = "documentosAdicionais.jsp";
+    private final static String ACAO_FORMULARIO_PARTE4 = "concluirInscricao.jsp";
+    private final static String ACAO_FORMULARIO_FINAL = "mensagemConfirmacao.jsp";
+
+    private final static String MENSAGEM_REQUEST_ATTRIBUTE = "msg";
+    private final static String MENSAGEM_ERRO_PREFIXO = "erro:";
+    private final static String BOOTSTRAP_COL_PREFIXO = "col-md-";
+    private final static String REQUIRED_TXT = "required";
+    private final static String MSG_ERROS = "Houve erros no preenchimento no formulário. Verifique os campos destacados abaixo!";
+    private final static String MSG_CAMPO_OBRIGATORIO = "Este campo é obrigatório!";
+//    private final static String CAMPO_OBRIGATORIO = "obrigatorio";
+//    private final static String CAMPO_OPCIONAL = "opcional";
+    private final static String VALOR_CHECKBOX_SELECIONADO = "Sim";
+    private final static String TAMANHO_TEXTAREA = "5";
+    private final static String FORMATO_DATA_SALVO = "yyyy-MM-dd";
+    private final static String FORMATO_DATA_DESEJADO = "dd/MM/yyyy";
+    private final static String RETORNO_REQUEST_ATTRIBUTE = "retorno";
+    private final static String PROTOCOLO_REQUEST_ATTRIBUTE = "protocoloInscricao";
+
+    private final static float ALTURA_PAGINA_PDF = 297;
+    private final static float LARGURA_PAGINA_PDF = 210;
+    private final static float BORDA_PAGINA_PDF = 11;
+    private final static float ALTURA_LINHA_PDF = 5;
+    private final static float TAMANHO_FONTE_PDF = 9;
+    private final static float LARGURA_COL_BOOTSTRAP = (LARGURA_PAGINA_PDF - BORDA_PAGINA_PDF) / 12;
+
+    Formulario formulario;
+
+    String strPastaFormularios;
+    String strPastaInscricoes;
+    String strPastaTemporaria;
+
+    void carregarFormulario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String nomeCompostoFormulario = request.getParameter(ID_FORMULARIO);
+        int indice = nomeCompostoFormulario.indexOf(SEPARADOR_FORMULARIO);
+        String nomeFormulario = nomeCompostoFormulario.substring(indice);
+        String subPasta = nomeCompostoFormulario.substring(0, indice);
+
+        strPastaFormularios = PASTA_RAIZ + File.separator + subPasta + File.separator + NOME_PASTA_FORMULARIOS;
+        strPastaInscricoes = PASTA_RAIZ + File.separator + subPasta + File.separator + NOME_PASTA_INSCRICOES;
+        strPastaTemporaria = PASTA_RAIZ + File.separator + subPasta + File.separator + NOME_PASTA_TEMPORARIA;
+        try {
+            File f = new File(strPastaFormularios, nomeFormulario + EXTENSAO_FORMULARIO);
+            formulario = FabricaFormulario.criarFormulario(f, nomeFormulario, nomeCompostoFormulario);
+        } catch (Exception e) {
+            StringWriter sw = new StringWriter();
+            e.printStackTrace(new PrintWriter(sw));
+            request.setAttribute("stackTrace", sw.toString());
+            request.getRequestDispatcher("erro.jsp").forward(request, response);
+        }
+    }
+
+%>
+<% carregarFormulario(request, response);%>
